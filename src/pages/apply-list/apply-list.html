@@ -1,0 +1,34 @@
+<!--
+  Generated template for the ApplyListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>认证公司</ion-title>
+    <ion-buttons end>
+      <button ion-button>添加</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding-top>
+  <ion-list>
+    <ion-item *ngIf="companies.length === 0" class="enpty-message">
+      暂无认证信息
+    </ion-item>
+    <ion-item-sliding *ngFor="let company of companies">
+      <button ion-item no-padding text-indent (click)="goLogin(company)">{{company.companyName}}</button>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="removeCompanyServer(company)" >
+          <ion-icon name="trash"></ion-icon>
+          删除
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
