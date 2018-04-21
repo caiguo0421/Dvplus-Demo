@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../assets/icon/fonts/icomoon.eot?zdl2qi');
+  src:  url('../assets/icon/fonts/icomoon.eot?zdl2qi#iefix') format('embedded-opentype'),
+  url('../assets/icon/fonts/icomoon.ttf?zdl2qi') format('truetype'),
+  url('../assets/icon/fonts/icomoon.woff?zdl2qi') format('woff'),
+  url('../assets/icon/fonts/icomoon.svg?zdl2qi#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ion-icon[ng-reflect-name^="ai-"] {
+  font-family: 'icomoon' !important;
+
+}
+
+@mixin makeIcon($arg, $val) {
+  .ai-#{$arg}:before ,
+  .ion-ios-ai-#{$arg}:before ,
+  .ion-ios-ai-#{$arg}-outline:before ,
+  .ion-md-ai-#{$arg}:before ,
+  .ion-md-ai-#{$arg}-outline:before  {
+    content: $val;
+    font-size: 1.1em;
+    transform: translateY(3px);
+    //width: 26px;
+    //height: 26px;
+    display: inline-block;
+  }
+}
+
+@include makeIcon(vehicle-onway, '\e900');
+@include makeIcon(vehicle-store, '\e901');
