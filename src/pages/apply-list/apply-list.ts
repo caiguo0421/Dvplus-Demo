@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {CompanyServer} from "../../models/company-server";
 import {AuthProvider} from "../../providers/auth/auth";
+import {Api} from '../../providers/api/api';
 
 /**
  * Generated class for the ApplyListPage page.
@@ -19,7 +20,8 @@ export class ApplyListPage {
 
   companies:Array<CompanyServer> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public auth:AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public auth:AuthProvider,public api:Api) {
     this.refreshCompannies();
   }
 
@@ -47,10 +49,17 @@ export class ApplyListPage {
   }
 
   removeCompanyServer(company: CompanyServer) {
-
+    throw new Error("未完成");
   }
 
+  /**
+   * 登录
+   * @param {CompanyServer} company
+   */
   goLogin(company: CompanyServer) {
-
+    this.auth.setCurrentCompany(company).then(()=>{
+      this.api.setCompany(company);
+      this.navCtrl.push('loginPage');
+    });
   }
 }

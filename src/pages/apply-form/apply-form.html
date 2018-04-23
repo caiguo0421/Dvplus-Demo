@@ -7,12 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>apply-form</ion-title>
+    <ion-title>申请认证</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="submit()">完成</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-list-header>申请公司</ion-list-header>
+      <div class="companyInput">
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="keyword" name="company" placeholder="公司名称" (focus)="onKeywortFocus()"
+                     (keyup)="onKeywordChange($event)" (change)="onKeywordChange($event)"></ion-input>
+        </ion-item>
+      </div>
+      <ion-item-group *ngIf="showAutoComplete">
+        <ion-item *ngFor="let company of filterList" (click)="choiceCompany(company)">
+          {{company.companyName}}
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+  </form>
 
 </ion-content>

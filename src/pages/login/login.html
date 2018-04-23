@@ -5,14 +5,48 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
+  <ion-navbar color="ligt">
+    <ion-buttons end>
+      <button ion-button (click)="goApplyList()">切换</button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div class='info'>
+    <img src="assets/imgs/logo.png"/>
+    <h2>{{companyServer && companyServer.companyName}}</h2>
+  </div>
+  <form (submit)="doLogin()">
+
+    <ion-list>
+      <ion-item>
+        <ion-label>用户名</ion-label>
+        <ion-input placeholder="请输入用户名" type="user" [(ngModel)]="account.userNo" name="user"
+                   (change)="queryDepartment($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>密码</ion-label>
+        <ion-input placeholder="请输入密码" type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>单位</ion-label>
+        <ion-select class="log" [(ngModel)]="account.stationId" name="stationId" [disabled]="departments.length===0"
+                    [okText]="'完成'" [cancelText]="'取消'">
+          <ion-option *ngFor="let department of departments" [value]="deparetment.value">{{department.label}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <div padding>
+        <button ion-button class="loginButton" color="primary" full>登录</button>
+      </div>
+
+    </ion-list>
+
+  </form>
 
 </ion-content>

@@ -32,6 +32,7 @@ export class MyApp {
         statusBar.styleBlackTranslucent();
       }
 
+      // this.storage.clear();
       this.storage.initDb();//初始化本地数据库
 
       this.api.init().then(()=>{
